@@ -5,11 +5,24 @@ import (
 	// "web/controller"
 
 	"github.com/gin-gonic/gin"
+
+  "github.com/huuvinhnguyen/binngo/internal/delivery/http/api"
+	"github.com/huuvinhnguyen/binngo/internal/repository/device"
+	"github.com/huuvinhnguyen/binngo/internal/usecase/device"
 )
 
 import "github.com/huuvinhnguyen/binngo/web/controller"
 
+
 func main() {
+
+  deviceRepo := device.NewDeviceRepository()
+	deviceUsecase := device.NewDeviceUsecase(deviceRepo)
+
+	api := api.NewAPI(deviceUsecase)
+	api.RegisterRoutes()
+
+
 	r := gin.New()
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
