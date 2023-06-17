@@ -1,11 +1,10 @@
-// internal/usecase/device/device_usecase.go
-package device
+// internal/usecase/device/device.go
+package usecase
 
 import (
-	"github.com/huuvinhnguyen/binngo/internal/entity"
-	"github.com/huuvinhnguyen/binngo/internal/repository/device"
+  "github.com/huuvinhnguyen/binngo/internal/repository/device"
+  "github.com/huuvinhnguyen/binngo/internal/entity"
 )
-
 type DeviceUsecase interface {
 	GetDevices() ([]entity.Device, error)
 }
@@ -20,11 +19,6 @@ func NewDeviceUsecase(deviceRepo device.DeviceRepository) DeviceUsecase {
 	}
 }
 
-func (u *deviceUsecase) GetDevices() ([]entity.Device, error) {
-	devices, err := u.deviceRepo.GetDevices()
-	if err != nil {
-		return nil, err
-	}
-
-	return devices, nil
+func (uc *deviceUsecase) GetDevices() ([]entity.Device, error) {
+	return uc.deviceRepo.GetDevices()
 }
