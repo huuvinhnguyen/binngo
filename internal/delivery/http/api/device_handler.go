@@ -3,14 +3,15 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/huuvinhnguyen/binngo/internal/usecase/device"
+	"github.com/huuvinhnguyen/binngo/internal/usecase"
+  // "github.com/huuvinhnguyen/binngo/internal/repository/device"
 )
 
 type DeviceHandler struct {
-	deviceUsecase device.DeviceUsecase
+	deviceUsecase usecase.DeviceUsecase
 }
 
-func NewDeviceHandler(deviceUsecase device.DeviceUsecase) *DeviceHandler {
+func NewDeviceHandler(deviceUsecase usecase.DeviceUsecase) *DeviceHandler {
 	return &DeviceHandler{
 		deviceUsecase: deviceUsecase,
 	}
